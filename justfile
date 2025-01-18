@@ -18,10 +18,10 @@ setup-env:
     python -m pip install \
         --find-links https://iree.dev/pip-release-links.html \
         --upgrade \
-        iree-base-compiler \
-        iree-base-runtime \
-        iree-tools-tflite \
-        iree-tools-tf
+        iree-compiler==20240828.999 \
+        iree-runtime==20240828.999 \
+        iree-tools-tflite==20240828.999 \
+        iree-tools-tf==20240828.999
 
 convert-tf2-to-mlir model:
     iree-import-tf {{model}} -o model.mlir

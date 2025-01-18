@@ -1,0 +1,25 @@
+name: IREE GD Quickstart Workflow
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y just curl tree
+
+      - name: Run justfile
+        run: just setup-env
+
+      - name: Run justfile
+        run: just convert-tflite-to-mlir ./thirdparty/esrgan.tflite
+
+      - name: Display directory structure
+        run: tree

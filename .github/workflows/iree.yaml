@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up dependencies
         run: |
@@ -23,3 +23,12 @@ jobs:
 
       - name: Display directory structure
         run: tree
+
+      - name: Upload model files as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-files
+          path: |
+            model.metal.vmfb
+            model.mlir
+            model.vulkan.vmfb
